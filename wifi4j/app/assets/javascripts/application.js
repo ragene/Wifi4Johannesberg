@@ -33,15 +33,48 @@ $(document).ready(function(){
 		
 	var map = new ol.Map({
 		target: 'map',
-		//overlay: [popup],
+		overlay: [hotspot],
 		layers: [
 		  new ol.layer.Tile({
 			source: new ol.source.OSM()
 		  }), vectorLayer
 		],
 		view: new ol.View({
-		  center: ol.proj.transform([11.57, 48.13], 'EPSG:4326', 'EPSG:3857'),
-		  zoom: 7
+		  center: ol.proj.transform([9.13, 50.02], 'EPSG:4326', 'EPSG:3857'),
+		  zoom: 13
 		})
 	});
+	
+	var element = document.getElementById('hotspot');
+
+	var hotspot = new ol.Overlay({
+	  element: element,
+	  positioning: 'bottom-center',
+	  stopEvent: false
+	});
+
+	map.addOverlay(hotspot);
+	
+	var iconFeature = new ol.Feature({
+		geometry: new ol.geom.Point(ol.proj.transform([9.137706756591797, 50.02938523179295], 'EPSG:4326', 'EPSG:3857'))
+	});
+	var circle = new ol.style.Circle({
+		fill: new ol.style.Fill({color: 'green'}),
+		radius: 60,
+		center: [9.137706756591797, 50.02938523179295]
+	});
+	var center = [9.137706756591797, 50.02938523179295]
+	var radius = circle.getRadius()
+	var edgeCoordinate = [center[0] + radius, center[1]];
+	var wgs84Sphere = new ol.Sphere(6378137);
+	var groundRadius = wgs84Sphere.haversineDistance(
+		ol.proj.transform(center, 'EPSG:3857', 'EPSG:4326'), 
+		ol.proj.transform(edgeCoordinate, 'EPSG:3857', 'EPSG:4326')
+	);
+	var iconStyle =  new ol.style.Style({
+		image: circle
+	})
+	//iconStyle.setZIndex(0)
+	iconFeature.setStyle(iconStyle);
+	vectorSource.addFeature(iconFeature)
 });
