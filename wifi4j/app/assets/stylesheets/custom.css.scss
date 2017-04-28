@@ -1,0 +1,24 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+//@import "font-awesome-sprockets";
+//@import "font-awesome";
+@import url("http://fonts.googleapis.com/css?family=Lato");
+
+body {
+	width: auto;
+	margin: auto;
+	padding-top: 70px;
+}
+
+.scale-line {
+  position: absolute;
+}
+
+
+.ol-scale-line {
+  position: relative;
+}
+
+.map {
+    width: 100%;
+}
