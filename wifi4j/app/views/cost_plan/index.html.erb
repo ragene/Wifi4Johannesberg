@@ -3,12 +3,67 @@
 	<%= stylesheet_link_tag("custom", "ol") %>
 	<body>
 		<div class="container">
-			<div id="map" class="map">
-				<div id="hotspot">
+			<div class="tabContent" id="projectOverview">
+				<div class="page-header">
+					<h2>
+						WiFi4Johannesberg
+					</h2>
+				</div>
+				<p>
+					2017 startet die neue Initiative der Kommission mit einem Budget von 120 Millionen Euro bis 2019. Zunächst geht es um die Installation modernster WLAN-Technologie in den Zentren des öffentlichen Lebens.
+				</p>
+				<div class="page-header" style="text-align: left">
+					<h4>
+						Wer profitiert davon?
+					</h>
+				</div>
+				<div class="row">
+					<div class="box">
+					<p>
+						Alle in Europa
+
+						WiFi4EU soll möglichst breitflächig ausgerollt werden, so dass Einwohner/-innen und Besucher/-innen tausender Gemeinden in der ganzen EU in den Genuss leistungsfähiger Internetanschlüsse kommen.
+
+						Mindestens 6 000 bis 8 000 Gemeinden
+						Bis zu 40-50 Millionen Anschlüsse pro Tag
+						Im öffentlichen Auftrag tätige Einrichtungen
+
+						An der Initiative können sich im öffentlichen Auftrag tätige Einrichtungen beteiligen, beispielsweise Gemeindeverwaltungen, Bibliotheken oder Gesundheitszentren. WiFi4EU übernimmt die Kosten für Ausrüstung und Installation (Internet-Zugangspunkte), die Einrichtung zahlt die Netzanbindung (Internetabonnement) und die Instandhaltung der Anlagen.
+
+						Die Gemeinden werden ermutigt, eigene digitale Dienste wie elektronische Behörden- und Gesundheitsdienste sowie eTourismus zu entwickeln und zu fördern.
+					</p>v
+					<div class="tabContent" id="youtubeVideo" style="text-align: center">
+						<iframe width="559" height="313" src="https://www.youtube.com/embed/FvaJIPg0Pxw" frameborder="0" allowfullscreen></iframe>
+					</div>
 				</div>
 			</div>
-			<div id="scale-line" class="scale-line">
-			</div>	
+			<div class="tabContent" id="costPlan">
+				<div class="page-header">
+					<h2>
+						Kostenprognose
+					</h2>
+			</div>
+			<div class="container">
+				
+					<div class="box">
+						<div class="page-header">
+							<h4>
+								Netzwerk Diagram
+							</h4>
+						</div>
+						<%= image_tag("networkDiagram.png") %>
+					</div>
+					<div class="box">
+						<div id="map" class="map" style="text-align: right" value="9.135385%50.027337-9.137706756591797%50.02938523179295-9.129586%50.020918-9.114524%50.033364-9.1199319.119931%50.030514-9.125875%50.028874-9.164670%50.033316-9.115146%50.037895">
+							<div id="hotspot">
+								
+							</div>
+						</div>
+						<div id="scale-line" class="scale-line">
+						</div>
+					</div>
+				
+			</div>
 		</div>
 	</body>
 </html>

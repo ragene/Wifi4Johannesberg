@@ -14,11 +14,28 @@ body {
   position: absolute;
 }
 
+.page-header {
+
+	text-align: center
+}
+#youtubeVideo {
+	position: relative;
+	align: center;
+}
 
 .ol-scale-line {
   position: relative;
 }
 
 .map {
-    width: 100%;
+	width: 100%;
+}
+img {
+	width: 100%;
+	position: relative;
+}
+
+.hotspot {
+	max-width: 10px;
+    height: 15px;
 }

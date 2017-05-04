@@ -1,0 +1,111 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file. JavaScript code in this file should be added after the last require_* statement.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
+//= require ol
+
+$(document).ready(function(){
+	var points = $.makeArray($('#map').attr("value"));
+	var coord = $(points)[0].split("-");
+	var vectorSource = new ol.source.Vector({});
+
+	var vectorLayer = new ol.layer.Vector({
+		source: vectorSource
+	});
+	var scaleLine = new ol.control.ScaleLine({className: "ol-scale-line", target: document.getElementById('scale-line')})	
+	console.log(scaleLine)
+	var map = new ol.Map({
+		controls: ol.control.defaults({
+			attributionOptions: /** @type {olx.control.AttributionOptions} */ ({collapsible: false})
+		}).extend([
+			scaleLine
+		]),
+		target: 'map',
+		overlay: [hotspot],
+		layers: [
+		  new ol.layer.Tile({
+			source: new ol.source.OSM()
+		  }), vectorLayer
+		],
+		view: new ol.View({
+		  center: ol.proj.transform([9.137706756591797, 50.02938523179295], 'EPSG:4326', 'EPSG:3857'),
+		  zoom: 14,
+		  projection: "EPSG:3857"
+		})
+	});
+	map.getCurrentScale = function () {
+		//var map = this.getMap();
+		var map = this;
+		var view = map.getView();
+		var resolution = view.getResolution();
+		var units = map.getView().getProjection().getUnits();
+		var dpi = 25.4 / 0.28;
+		var mpu = ol.proj.METERS_PER_UNIT[units];
+		var scale = resolution * mpu * 39.37 * dpi;
+		return scale;
+
+	};
+	var divScale = 480; // to adjusting
+	$.each(coord, function(index, value){
+		var lonLatArry = value.split('%')
+		
+		var iconFeature = new ol.Feature({
+			geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lonLatArry[0]), parseFloat(lonLatArry[1])], 'EPSG:4326', 'EPSG:3857'))
+		});
+		
+		var newCircle = new ol.style.Circle({
+			fill: new ol.style.Fill({color: 'rgba(255,255,0,0.3)'}),
+			radius: map.getCurrentScale()/divScale,
+			center: [parseFloat(lonLatArry[0]), parseFloat(lonLatArry[1])]
+		});
+		var iconStyle =  new ol.style.Style({
+			image: newCircle
+		});
+		iconFeature.setStyle(iconStyle)
+		// var radius = 12
+		// var edgeCoordinate = [center[0] + radius, center[1]];
+		// var wgs84Sphere = new ol.Sphere(6378137);
+		// var groundRadius = wgs84Sphere.haversineDistance(
+			// ol.proj.transform(center, 'EPSG:3857', 'EPSG:4326'), 
+			// ol.proj.transform(edgeCoordinate, 'EPSG:3857', 'EPSG:4326')
+		// );
+		
+		
+		//iconStyle.setZIndex(0)
+		vectorSource.addFeature(iconFeature)
+	});
+	map.getView().on('change:resolution', function(evt){
+			$.each(coord, function(index, value){
+				var lonLatArry = value.split('%')
+				//var radius =  map.getCurrentScale()/divScale;
+				//console.log(radius)
+				//iconFeature.getStyle().getGeometry().setRadius(radius);
+				
+				var iconFeature = new ol.Feature({
+					geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lonLatArry[0]), parseFloat(lonLatArry[1])], 'EPSG:4326', 'EPSG:3857'))
+				});
+				var newIconStyle =  new ol.style.Style({
+					image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+					  src: "<%= image_path('wifi.png') %>",
+					  anchor: [0.5, 0.5],
+					  anchorXUnits: 'fraction',
+					  anchorYUnits: 'pixels'
+					}))
+				});
+				iconFeature.setStyle(newIconStyle)
+				vectorSource.addFeature(iconFeature)
+			});
+		});
+});
