@@ -20,18 +20,33 @@ body {
 }
 #youtubeVideo {
 	position: relative;
-	align: center;
+	text-align: right;
 }
 
+td {
+	text-align: center;
+	hieght: 40px;
+	font-size: 13px;
+}
+
+
+.tabContent {
+	display: none;
+}
 .ol-scale-line {
   position: relative;
 }
 
 .map {
 	width: 100%;
+	
 }
+
+
+
 img {
-	width: 100%;
+	width: 70%;
+	height: 70%;
 	position: relative;
 }
 

@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
-	<%= stylesheet_link_tag("custom", "ol") %>
+	
 	<body>
 		<div class="container">
-			<div class="tabContent" id="projectOverview">
+			<div class="tabContent" id="projectOverview" name="project" title="Project Uberblick">
 				<div class="page-header">
 					<h2>
 						WiFi4Johannesberg
+						<a href="#showMap" id="showMap"><i class="fa fa-map-marker" aria-hidden="true">WiFi Map</i></a>
 					</h2>
+					<div id="dialog" atyle="display: none;">
+						<div id="map" class="map" id="mapper"style="text-align: right;" value="9.135385%50.027337-9.137706756591797%50.02938523179295-9.104893%50.043798-9.165623%50.032509-9.128179%50.020775-9.109469%50.036769-9.105338%50.036204-9.102645%50.034075-9.101937%50.031456">
+						<div id="hotspot">
+							
+						</div>
+					</div>
+					<div id="scale-line" class="scale-line">
+					</div>
+					</div>
+				
+
 				</div>
 				<p>
 					2017 startet die neue Initiative der Kommission mit einem Budget von 120 Millionen Euro bis 2019. Zunächst geht es um die Installation modernster WLAN-Technologie in den Zentren des öffentlichen Lebens.
@@ -15,10 +27,9 @@
 				<div class="page-header" style="text-align: left">
 					<h4>
 						Wer profitiert davon?
-					</h>
-				</div>
-				<div class="row">
-					<div class="box">
+					</h4>
+				</div>	
+				<div class="col-md-5">
 					<p>
 						Alle in Europa
 
@@ -30,39 +41,147 @@
 
 						An der Initiative können sich im öffentlichen Auftrag tätige Einrichtungen beteiligen, beispielsweise Gemeindeverwaltungen, Bibliotheken oder Gesundheitszentren. WiFi4EU übernimmt die Kosten für Ausrüstung und Installation (Internet-Zugangspunkte), die Einrichtung zahlt die Netzanbindung (Internetabonnement) und die Instandhaltung der Anlagen.
 
-						Die Gemeinden werden ermutigt, eigene digitale Dienste wie elektronische Behörden- und Gesundheitsdienste sowie eTourismus zu entwickeln und zu fördern.
-					</p>v
-					<div class="tabContent" id="youtubeVideo" style="text-align: center">
-						<iframe width="559" height="313" src="https://www.youtube.com/embed/FvaJIPg0Pxw" frameborder="0" allowfullscreen></iframe>
-					</div>
+						Die Gemeinden werden ermutigt, eigene digitale Dienste wie elektronische Behörden- und Gesundheitsdienste sowie eTourismus zu entwickeln und zu fördern	
+					</p>
+				</div>
+				<div class="col-md-5">
+					<iframe width="559" height="313" src="https://www.youtube.com/embed/FvaJIPg0Pxw"  style="text-align: left" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
-			<div class="tabContent" id="costPlan">
+			<div class="tabContent" id="costPlan" name="costs" title="Kosten">
 				<div class="page-header">
 					<h2>
-						Kostenprognose
+						Kosten
 					</h2>
+				</div>
+				<div class="page-header" style="text-align: left">
+					<h4>
+						Infrastruktur Kosten
+					</h4>
+				</div>
+				<table class="table-bordered" align="center" width="100%" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="font-size: 15px;">
+								Gerät
+							</td>
+							<td style="font-size: 15px;">
+								Reichweite
+							</td>
+							<td style="font-size: 15px;">
+								Kosten
+							</td>
+							<td style="font-size: 15px;">
+								Zahl
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Ubiquiti AM-5G17-90 Netzwerk/Router Antenna
+							</td>
+							<td>
+							
+							</td>
+							<td>
+								€91,60 (Amazon)
+							</td>
+							<td>
+								1
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Ubiquiti Networks rocketm5 
+							</td>
+							<td>
+								15km (Point-to-Point Verbindung) 
+							</td>
+							<td>
+								€96,75 (Amazon)
+							</td>
+							<td>
+								1
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Ubiquiti Nanobeam M5 16dbi
+							</td>
+							<td>
+								8km+ (Point-to-Point Verbindung)
+							</td>
+							<td>
+								€65 - €77 (Amazon)
+							</td>
+							<td>
+								5
+							</td>
+						</tr>
+						<tr>
+							<td>
+								TP-Link EAP110-Outdoor N300 Wireless Outdoor Access Point
+							</td>
+							<td>
+								200m
+							</td>
+							<td>
+								€46,99 (Amazon)
+							</td>
+							<td>
+								16 - 32
+							</td>
+						</tr>
+						<tr>
+							<td>
+								TP-Link TL-SG108PE 8-Port-Gigabit-Easy-Smart-Switch
+							</td>
+							<td>
+							</td>
+							<td>
+								€57,99 (Amazon)
+							</td>
+							<td>
+								5
+							</td>
+						</tr>
+						<tr>
+							<td>
+								LogiLink CAT 5e Installationkabel SFTP, 50 m
+							</td>
+							<td>
+							</td>
+							<td>
+								€12,84
+							</td>
+							<td>
+								1
+							</td>
+						</tr>	
+						<tr>
+							<td>
+								25 x RJ45 Connector Netzwerkkabel Cat5, Cat5e und Cat6 Stecker B
+							</td>
+							<td>
+							</td>
+							<td>
+								€9,86
+							</td>
+							<td>
+								2
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<div class="container">
-				
-					<div class="box">
-						<div class="page-header">
-							<h4>
-								Netzwerk Diagram
-							</h4>
-						</div>
-						<%= image_tag("networkDiagram.png") %>
-					</div>
-					<div class="box">
-						<div id="map" class="map" style="text-align: right" value="9.135385%50.027337-9.137706756591797%50.02938523179295-9.129586%50.020918-9.114524%50.033364-9.1199319.119931%50.030514-9.125875%50.028874-9.164670%50.033316-9.115146%50.037895">
-							<div id="hotspot">
-								
-							</div>
-						</div>
-						<div id="scale-line" class="scale-line">
-						</div>
-					</div>
-				
+			<div class="tabContent" id="networkDiagram" name="diagram" title="Netzwerk Diagram">
+				<div class="page-header">
+					<h4>
+						Netzwerk Diagram
+					</h4>
+				</div>
+				<div class="container">
+					<%= image_tag("networkDiagram.png") %>
+				</div>
 			</div>
 		</div>
 	</body>
