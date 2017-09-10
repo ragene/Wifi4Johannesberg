@@ -1,4 +1,4 @@
-Wifi4Johannesberg is a project undertaken by myself to deploy WiFi access across the town of Johannesberg as part of a 
+Wifi4Johannesberg is a project undertaken by myself to deploy WiFi access across the town of Johannesberg as part of an
 intiative put forth by the European Union to close the digital divide across Europe. 
 
 This is a basic Single Page Application written using Rails and Javascript which provides the city planner and Mayor an overview of costs, coverage and implementation. 
